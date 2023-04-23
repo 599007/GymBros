@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712388244490",
+    "project_id": "gymbross-a7141",
+    "storage_bucket": "gymbross-a7141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712388244490:android:dc28a5b3b9278f886e9bf3",
+        "android_client_info": {
+          "package_name": "com.example.fluttertest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712388244490-vr3h1s3e2ei7va6vm72ongrvpamkqfqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFYJRTo07sn3OaVzZ3FOedZ0bg8VaGrl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712388244490-vr3h1s3e2ei7va6vm72ongrvpamkqfqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
