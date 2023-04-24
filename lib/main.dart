@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const MyHomePage(),
     );
@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Color bgColor = Colors.white10;
+  Color bgColor = const Color.fromARGB(255, 27, 27, 27);
   final _formKey = GlobalKey<FormState>();
 
   String? _email ='';
@@ -39,41 +39,54 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
-      body: Padding(padding: EdgeInsets.all(16.0),
+      backgroundColor: bgColor,
+      body: SingleChildScrollView(
+      child: Padding(padding: EdgeInsets.all(16.0),
       child: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Email'),
-              validator: (value){
-                if(value?.isEmpty ?? true){
-                  return 'Please enter your email';
-                }
-                return null;
-              },
-              onSaved: (value){
-                _email = value;
-              },
+            Container(
+              decoration: BoxDecoration(
+              color: Color.fromARGB(110, 124, 120, 120),
+              borderRadius: BorderRadius.circular(10.0),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: false,
+              child: TextFormField(
+                decoration: InputDecoration(labelText: 'Email', border: InputBorder.none),
                 validator: (value){
                   if(value?.isEmpty ?? true){
-                    return 'Please enter you password';
+                    return 'Please enter your email';
                   }
                   return null;
                 },
                 onSaved: (value){
-                  _password = value;
+                  _email = value;
                 },
+                ),
+            ),
+            SizedBox(height: 5.0),
+              Container(
+                decoration: BoxDecoration(
+                color: Color.fromARGB(110, 124, 120, 120),
+                borderRadius: BorderRadius.circular(10.0),
               ),
-              SizedBox(height: 16.0),
+                child: TextFormField(
+                  decoration: InputDecoration(labelText: 'Password', border: InputBorder.none),
+                  obscureText: false,
+                  validator: (value){
+                    if(value?.isEmpty ?? true){
+                      return 'Please enter you password';
+                    }
+                    return null;
+                  },
+                  onSaved: (value){
+                    _password = value;
+                  },
+                ),
+              ),
+              const SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: (){
                   final form = _formKey.currentState;
@@ -85,14 +98,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text('Login'),
               ),
-              TextButton(
+              const SizedBox(height: 50.0),
+              Align(
+              alignment: Alignment.bottomCenter,
+              child: TextButton(
                 onPressed: (){
                 Navigator.push(context,  MaterialPageRoute(
                   builder: (context) => registerPage()));
               }, child: Text('Register new gymbro'),
               )
-          ]
-        )))
-    );
+              )
+        ]
+              )
+      ))
+      
+        )
+        );    
   }
 }
