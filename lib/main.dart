@@ -62,16 +62,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: bgColor,
-        body: Padding(
+        body: Stack(
+          children: [
+            Container(
+               decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage("https://i.gyazo.com/2b4200726164fda89e3beb9067be666e.png"),
+              fit: BoxFit.cover,
+            ),
+        ),
+        ), 
+        Padding(
             padding: EdgeInsets.all(16.0),
             child: Form(
                 key: _formKey,
-                child: Column(children: <Widget>[
+                child: Column(
+                  children: <Widget>[
                   const SizedBox(height: 80),
                   ClipRRect(
-                      child: Image.asset("assets/logo.png",
-                          height: 180, width: 180),
+                      child: Text("logo"),
                       borderRadius: BorderRadius.circular(50)),
                   const SizedBox(height: 70),
                   Column(
@@ -141,6 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: Text('Register new gymbro'),
                   )
-                ]))));
+                ])))]));
   }
 }

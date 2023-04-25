@@ -6,9 +6,14 @@ class registerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Registration'),
-      ),
+       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://i.gyazo.com/2b4200726164fda89e3beb9067be666e.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+       )
     );
   }
 }
