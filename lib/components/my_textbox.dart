@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Mytextbox extends StatelessWidget{
-const Mytextbox({super.key});
+  final String hintText;
+
+const Mytextbox({
+  super.key,
+  required this.hintText
+  });
 
 @override
 Widget build(BuildContext context){
@@ -18,7 +23,9 @@ Widget build(BuildContext context){
                       borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
                     fillColor: Colors.grey.shade200,
-                    filled: true))))
+                    filled: true,
+                    hintText: hintText
+                    ))))
   ]);
 }
 }

@@ -5,27 +5,6 @@ import 'package:fluttertest/pages/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertest/Methods.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -59,8 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 50),
 
             //Username textfield
-            
-                  Column(
+            Form(
+                  key: _formKey,
+                  child: Column(
                     children: [
                       Container(
                         child: Padding(
@@ -78,12 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 labelText: 'Email', labelStyle: TextStyle(color: Colors.grey[500]),
                                 border: InputBorder.none),
                             validator: (value) {
-                              return value?.isEmpty ?? true
-                                  ? 'Please enter your email'
-                                  : null;
+                              return null;
                             },
-                            onSaved: (value) {
-                              _email = value ?? "";
+                            onChanged: (value) {
+                              _email = value;
                             },
                           ),
                         ),
@@ -109,13 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               labelText: 'Password', labelStyle: TextStyle(color: Colors.grey[500]), border: InputBorder.none),
                             obscureText: true,
                             validator: (value) {
-                              return value?.isEmpty ?? true
-                                  ? 'Please enter you password'
-                                  : null;
+                              return null;
                             },
-                            onSaved: (value) {
-                              _password = value ?? "";
+                            onChanged: (value) {
+                              _password = value;
                             },
+                             
                           ),
                         ),
                       ),
@@ -128,9 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           
                           onPressed: () async {
                             final form = _formKey.currentState;
-                            if (form != null && form.validate()) {
-                              form.save();
-                              signIn(context);
+                      
+                            if (form!.validate()) {
+                              signIn(context, _email, _password);
                             }
                           },
                           style: ButtonStyle(
@@ -142,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-
+            ),
                   const SizedBox(height: 25.0),
 
                    Text(
@@ -188,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Image.asset('assets/apple.png', height: 72,),
                         ],
                       ),
-                    ],
+            ],
                 )))));
   }
 }
